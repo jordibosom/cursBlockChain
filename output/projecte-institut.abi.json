@@ -1,0 +1,142 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.88.0",
+            "commitHash": "6b00bc3880198600130e1cf62b8f8a93494488cc",
+            "commitDate": "2025-06-23",
+            "channel": "Stable",
+            "short": "rustc 1.88.0 (6b00bc388 2025-06-23)"
+        },
+        "contractCrate": {
+            "name": "projecte-institut",
+            "version": "0.0.0",
+            "gitVersion": "v1.0-982-g11c63ea"
+        },
+        "framework": {
+            "name": "multiversx-sc",
+            "version": "0.58.0"
+        }
+    },
+    "name": "PrestecsInstitut",
+    "constructor": {
+        "inputs": [],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "afegirTipusItem",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "tipus_item",
+                    "type": "bytes"
+                },
+                {
+                    "name": "quantitat_inicial",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "solicitarPrestec",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "tipus_item",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "aprovarPrestec",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "adreca_usuari",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "confirmarRetorn",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "adreca_usuari",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "consultarPrestec",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "adreca",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "optional<PrestecInfo>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "consultarDisponibles",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "tipus_item",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "consultarSolicitudPendent",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "adreca",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "optional<bytes>",
+                    "multi_result": true
+                }
+            ]
+        }
+    ],
+    "esdtAttributes": [],
+    "hasCallback": false,
+    "types": {
+        "PrestecInfo": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "tipus_item",
+                    "type": "bytes"
+                },
+                {
+                    "name": "data_retorn",
+                    "type": "u64"
+                }
+            ]
+        }
+    }
+}
